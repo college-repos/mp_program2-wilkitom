@@ -1,2 +1,8 @@
-# mp_prog2_files
-files needed for programming assignment 2
+Program # X
+
+Name:
+Cosc 5730 or 4730
+
+Description: (how to run the program, phone/emulator screen size, android version ie 7.0)
+
+Anything that doesn't work:
