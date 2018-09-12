@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
                     roundedTipAmt = Math.round(tipDollarAmt);
                     Log.v("bill", billAmt.toString());
                     Log.v("Total", totalAmt.toString());
-                    Log.v("RoundedTip", roundedTipAmt.toString());
+                    Log.v("RoundedTip", String.valueOf(roundedTipAmt));
                 }
                 else
                 {
