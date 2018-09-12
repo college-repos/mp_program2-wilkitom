@@ -9,21 +9,21 @@
     <Button
         android:id="@+id/button4"
         android:layout_width="309dp"
-        android:layout_height="wrap_content"
+        android:layout_height="67dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="120dp"
-        android:text="Calculate Total Rounded To Dollar"
+        android:text="Calculate Rounded Total"
         android:textColor="@android:color/holo_green_dark" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="309dp"
-        android:layout_height="wrap_content"
+        android:layout_height="67dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="190dp"
-        android:text="Calculate Total without rounding"
+        android:layout_marginBottom="200dp"
+        android:text="Calculate Total "
         android:textColor="@android:color/holo_green_dark" />
 
     <EditText
@@ -113,11 +113,11 @@
     <Button
         android:id="@+id/button2"
         android:layout_width="309dp"
-        android:layout_height="wrap_content"
+        android:layout_height="67dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="34dp"
-        android:text="Calculate Total With Tip Rounded To Dollar"
+        android:layout_marginBottom="40dp"
+        android:text="Calculate Total With Tip Rounded"
         android:textColor="@android:color/holo_green_dark" />
 
 </RelativeLayout>
