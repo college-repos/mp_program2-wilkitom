@@ -12,7 +12,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    String TAG = "WTF";
     EditText bill, tip, splits;
     Button noRound, roundTotal, roundTip;
 
@@ -48,33 +47,7 @@ public class MainActivity extends AppCompatActivity {
                     Double billAmt = Double.parseDouble(bill.getText().toString());
                     Double tipAmt = Double.parseDouble(tip.getText().toString());
                     Double splitAmt = Double.parseDouble(splits.getText().toString());
-                    if(splitAmt == 1)
-                    {
-                        Double tipDollarAmt, totalAmt;
-                        Log.v(TAG, billAmt.toString());
-                        tipAmt = tipAmt/100;
-                        tipDollarAmt = billAmt * tipAmt;
-                        totalAmt = billAmt + tipDollarAmt;
-                        Log.v("bill", billAmt.toString());
-                        Log.v("total", totalAmt.toString());
-                        Log.v("tip", tipDollarAmt.toString());
-                    }
-                    else
-                    {
-                        Double tipDollarAmt, totalAmt, splitTotalAmt, splitTipAmt, splitBillAmt;
-                        tipAmt = tipAmt/100;
-                        tipDollarAmt = billAmt * tipAmt;
-                        totalAmt = billAmt + tipDollarAmt;
-                        Log.v("bill", billAmt.toString());
-                        Log.v("total", totalAmt.toString());
-                        Log.v("tip", tipDollarAmt.toString());
-                        splitTotalAmt = totalAmt/splitAmt;
-                        splitTipAmt = tipDollarAmt/splitAmt;
-                        splitBillAmt = billAmt/splitAmt;
-                        Log.v("SplitBill",splitBillAmt.toString());
-                        Log.v("SplitTotal", splitTotalAmt.toString());
-                        Log.v("SplitTip", splitTipAmt.toString());
-                    }
+                    noRoundDialog(1, billAmt, tipAmt, splitAmt);
                 }
             }
         });
@@ -100,37 +73,7 @@ public class MainActivity extends AppCompatActivity {
                     Double billAmt = Double.parseDouble(bill.getText().toString());
                     Double tipAmt = Double.parseDouble(tip.getText().toString());
                     Double splitAmt = Double.parseDouble(splits.getText().toString());
-                    if(splitAmt == 1)
-                    {
-                        Double tipDollarAmt, totalAmt;
-                        Log.v(TAG, billAmt.toString());
-                        tipAmt = tipAmt/100;
-                        tipDollarAmt = billAmt * tipAmt;
-                        totalAmt = billAmt + tipDollarAmt;
-                        long roundedTotalAmt;
-                        roundedTotalAmt = Math.round(totalAmt);
-                        Log.v("bill", billAmt.toString());
-                        Log.v("roundedTotal", String.valueOf(roundedTotalAmt));
-                        Log.v("tip", tipDollarAmt.toString());
-                    }
-                    else
-                    {
-                        Double tipDollarAmt, totalAmt, splitTotalAmt, splitTipAmt, splitBillAmt;
-                        tipAmt = tipAmt/100;
-                        tipDollarAmt = billAmt * tipAmt;
-                        totalAmt = billAmt + tipDollarAmt;
-                        Log.v("bill", billAmt.toString());
-                        Log.v("total", totalAmt.toString());
-                        Log.v("tip", tipDollarAmt.toString());
-                        splitTotalAmt = totalAmt/splitAmt;
-                        splitTipAmt = tipDollarAmt/splitAmt;
-                        splitBillAmt = billAmt/splitAmt;
-                        long roundedSplitTotal;
-                        roundedSplitTotal = Math.round(splitTotalAmt);
-                        Log.v("SplitBill",splitBillAmt.toString());
-                        Log.v("RoundedSplitTotal", String.valueOf(roundedSplitTotal));
-                        Log.v("SplitTip", splitTipAmt.toString());
-                    }
+                        noRoundDialog(2, billAmt, tipAmt, splitAmt);
                 }
             }
         });
@@ -156,36 +99,7 @@ public class MainActivity extends AppCompatActivity {
                     Double billAmt = Double.parseDouble(bill.getText().toString());
                     Double tipAmt = Double.parseDouble(tip.getText().toString());
                     Double splitAmt = Double.parseDouble(splits.getText().toString());
-                    if(splitAmt == 1)
-                    {
-                        Double tipDollarAmt, totalAmt;
-                        Log.v(TAG, billAmt.toString());
-                        tipAmt = tipAmt/100;
-                        tipDollarAmt = billAmt * tipAmt;
-                        totalAmt = billAmt + tipDollarAmt;
-                        long roundedTipAmt;
-                        roundedTipAmt = Math.round(tipDollarAmt);
-                        Log.v("bill", billAmt.toString());
-                        Log.v("Total", totalAmt.toString());
-                        Log.v("RoundedTip", String.valueOf(roundedTipAmt));
-                    }
-                    else {
-                        Double tipDollarAmt, totalAmt, splitTotalAmt, splitTipAmt, splitBillAmt;
-                        tipAmt = tipAmt / 100;
-                        tipDollarAmt = billAmt * tipAmt;
-                        totalAmt = billAmt + tipDollarAmt;
-                        Log.v("bill", billAmt.toString());
-                        Log.v("total", totalAmt.toString());
-                        Log.v("tip", tipDollarAmt.toString());
-                        splitTotalAmt = totalAmt / splitAmt;
-                        splitTipAmt = tipDollarAmt / splitAmt;
-                        splitBillAmt = billAmt / splitAmt;
-                        long roundedSplitTip;
-                        roundedSplitTip = Math.round(splitTipAmt);
-                        Log.v("SplitBill", splitBillAmt.toString());
-                        Log.v("SplitTotal", splitTotalAmt.toString());
-                        Log.v("RoundedSplitTip", String.valueOf(roundedSplitTip));
-                    }
+                        noRoundDialog(3 ,billAmt, tipAmt, splitAmt);
                 }
             }
         });
@@ -195,9 +109,10 @@ public class MainActivity extends AppCompatActivity {
         HintDialog hintDialog = new HintDialog();
         hintDialog.show(getSupportFragmentManager(), "hintDialog");
     }
-    /*public void noRoundDialog(){
+    public void noRoundDialog(Integer mode, Double bill, Double tip, Double splits){
         NoRoundDialog noRoundDialog = new NoRoundDialog();
+        noRoundDialog.setValue(mode, bill, tip, splits);
         noRoundDialog.show(getSupportFragmentManager(), "billDialog");
-    }*/
+    }
 }
 
