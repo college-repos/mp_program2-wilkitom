@@ -103,13 +103,14 @@ public class NoRoundDialog extends AppCompatDialogFragment {
             } else if (mode == 3) {
                 if (splits == 1) {
                     tipAmount = bill*tipPercent;
-                    //Double roundedTip;
+                    Double roundedTipDbl;
                     Long roundedTip;
                     roundedTip = Math.round(tipAmount);
+                    roundedTipDbl = Double.parseDouble(roundedTip.toString());
                     total = roundedTip + bill;
                     builder.setTitle("Total Calculated Bill Amount")
                             .setMessage("Total Bill: \n\n" +
-                                    "Calculated Rounded Tip Amount: $" + String.format( "%.2f", roundedTip) + "\n\n" +
+                                    "Calculated Rounded Tip Amount: $" + String.format( "%.2f", roundedTipDbl) + "\n\n" +
                                     "Total Bill Amount With Tip: $" + String.format("%.2f",total) + "\n\n")
                             .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                 @Override
@@ -119,24 +120,31 @@ public class NoRoundDialog extends AppCompatDialogFragment {
                             });
                     return builder.create();
                 } else {
+                    tipAmount = bill*tipPercent;
+                    total = tipAmount + bill;
+                    Double roundedTipDbl, totalSplits;
+                    roundedTipDbl = tipAmount / splits;
+                    Long roundedTip;
+                    roundedTip = Math.round(roundedTipDbl);
+                    roundedTipDbl = Double.parseDouble(roundedTip.toString());
+                    totalSplits = roundedTipDbl + (bill/splits);
+                    builder.setTitle("Total Calculated Bill Amount")
+                            .setMessage("Total Bill: \n\n" +
+                                    "Calculated Rounded Tip Amount: $" + String.format( "%.2f", tipAmount) + "\n\n" +
+                                    "Total Bill Amount With Tip: $" + String.format("%.2f",total) + "\n\n" +
+                                    "Bill Per Person: \n\n"+
+                                    "Rounded Tip Amount per person: $" + String.format( "%.2f", roundedTipDbl) + "\n\n" +
+                                    "Total Bill Amount With Rounded Tip per person: $" + String.format( "%.2f", totalSplits) + "\n\n")
+                            .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
 
+                                }
+                            });
+                    return builder.create();
                 }
             }
         }
-
-       /* builder.setTitle("Total Calculated Bill Amount")
-                .setMessage("Given Bill Amount: \n\n" +
-                        "Calculated Tip Amount: \n\n" +
-                        "Total Bill  Amount With Tip: ")
-                .setPositiveButton("ok", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                });
-        return builder.create();*/
-
-
         return null;
     }
     public void setValue(Integer mode, Double bill, Double tip, Double splits)
