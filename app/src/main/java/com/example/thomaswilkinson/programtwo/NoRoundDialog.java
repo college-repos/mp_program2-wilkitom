@@ -16,13 +16,38 @@ public class NoRoundDialog extends AppCompatDialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         Double tipPercent = tip/100;
         if(bill < 0) {
-            Toast.makeText(getActivity().getApplicationContext(), "Enter valid input", Toast.LENGTH_SHORT).show();
+            builder.setTitle("Error")
+                    .setMessage("Please enter a valid value in field: Bill Amount.")
+                    .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    });
+            return builder.create();
+
         }
         else if(tip < 0 || tip > 100) {
-            Toast.makeText(getActivity().getApplicationContext(), "Enter valid input", Toast.LENGTH_SHORT).show();
+            builder.setTitle("Error")
+                    .setMessage("Please enter a valid value in field: Tip Percent.")
+                    .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    });
+            return builder.create();
         }
         else if(splits < 1) {
-            Toast.makeText(getActivity().getApplicationContext(), "Enter valid input", Toast.LENGTH_SHORT).show();
+            builder.setTitle("Error")
+                    .setMessage("Please enter a valid value in field: Splits.")
+                    .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    });
+            return builder.create();
         }
         else {
             if (mode == 1) {
@@ -130,7 +155,7 @@ public class NoRoundDialog extends AppCompatDialogFragment {
                     totalSplits = roundedTipDbl + (bill/splits);
                     builder.setTitle("Total Calculated Bill Amount")
                             .setMessage("Total Bill: \n\n" +
-                                    "Calculated Rounded Tip Amount: $" + String.format( "%.2f", tipAmount) + "\n\n" +
+                                    "Calculated Tip Amount: $" + String.format( "%.2f", tipAmount) + "\n\n" +
                                     "Total Bill Amount With Tip: $" + String.format("%.2f",total) + "\n\n" +
                                     "Bill Per Person: \n\n"+
                                     "Rounded Tip Amount per person: $" + String.format( "%.2f", roundedTipDbl) + "\n\n" +
