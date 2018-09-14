@@ -5,8 +5,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatDialogFragment;
-import android.util.Log;
-import android.widget.Toast;
+
 
 public class NoRoundDialog extends AppCompatDialogFragment {
     Integer mode;
@@ -15,6 +14,8 @@ public class NoRoundDialog extends AppCompatDialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         Double tipPercent = tip/100;
+
+        //Check values of each input, check for invalid inputs.
         if(bill < 0) {
             builder.setTitle("Error")
                     .setMessage("Please enter a valid value in field: Bill Amount.")
@@ -49,8 +50,11 @@ public class NoRoundDialog extends AppCompatDialogFragment {
                     });
             return builder.create();
         }
+        //All inputs valid
         else {
+            //if button # 1 (i.e. mode 1) pressed
             if (mode == 1) {
+                //bill is not being split
                 if (splits == 1) {
                     tipAmount = bill*tipPercent;
                     total = tipAmount + bill;
@@ -66,6 +70,7 @@ public class NoRoundDialog extends AppCompatDialogFragment {
                             });
                     return builder.create();
                 } else {
+                    //bill is being split
                     tipAmount = bill*tipPercent;
                     total = tipAmount + bill;
                     Double splitTip, splitTotal;
@@ -86,7 +91,9 @@ public class NoRoundDialog extends AppCompatDialogFragment {
                             });
                     return builder.create();
                 }
+            //if button # 2 (i.e. mode 2) pressed
             } else if (mode == 2) {
+                //bill is not being split
                 if (splits == 1) {
                     tipAmount = bill*tipPercent;
                     total = tipAmount + bill;
@@ -104,6 +111,7 @@ public class NoRoundDialog extends AppCompatDialogFragment {
                             });
                     return builder.create();
                 } else {
+                    //bill is being split
                     tipAmount = bill*tipPercent;
                     total = tipAmount + bill;
                     Double splitTotal ,roundedSplitTotal, splitTip;
@@ -125,7 +133,9 @@ public class NoRoundDialog extends AppCompatDialogFragment {
                             });
                     return builder.create();
                 }
+            //if button # 3 (i.e. mode 3) pressed
             } else if (mode == 3) {
+                //bill is not being split
                 if (splits == 1) {
                     tipAmount = bill*tipPercent;
                     Double roundedTipDbl;
@@ -145,6 +155,7 @@ public class NoRoundDialog extends AppCompatDialogFragment {
                             });
                     return builder.create();
                 } else {
+                    //bill is being split
                     tipAmount = bill*tipPercent;
                     total = tipAmount + bill;
                     Double roundedTipDbl, totalSplits;
@@ -174,6 +185,7 @@ public class NoRoundDialog extends AppCompatDialogFragment {
     }
     public void setValue(Integer mode, Double bill, Double tip, Double splits)
     {
+        //Takes values sent over from main activity, sets them inside fragment.
         this.mode = mode;
         this.bill = bill;
         this.tip = tip;

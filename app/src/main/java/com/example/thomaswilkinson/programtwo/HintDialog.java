@@ -10,7 +10,9 @@ public class HintDialog extends AppCompatDialogFragment {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+        //Build dialog box
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        //Dialog box inputs
         builder.setTitle("Instructions")
                 .setMessage("Calculating Bill Total: Enter the bill amount, desired tip percentage, number of people splitting the bill, and press the first button.\n\n" +
                         "Calculating Rounded Bill Total: Enter the bill amount, desired tip percentage, number of people splitting the bill, and press the second button.\n\n" +
