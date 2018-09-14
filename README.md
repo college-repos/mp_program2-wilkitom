@@ -1,8 +1,8 @@
-Program # X
+Program # 2
 
-Name:
-Cosc 5730 or 4730
+Name: Thomas Wilkinson
+Cosc 4730
 
-Description: (how to run the program, phone/emulator screen size, android version ie 7.0)
+Description: Open program, follow instructions. Run on Pixel 2.
 
 Anything that doesn't work:
