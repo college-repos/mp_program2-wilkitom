@@ -6,3 +6,7 @@ Cosc 4730
 Description: Open program, follow instructions. Run on Pixel 2.
 
 Anything that doesn't work:
+
+## Grade:
+
+50/50
